@@ -15,11 +15,14 @@ connectCloudinary()
 
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:3000',  // Allow requests from localhost:3000
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials: true,  // If your frontend needs cookies or authentication headers
-  };
+  origin: process.env.NODE_ENV === 'production'
+    ? "https://xcode-insta-frontend.onrender.com" 
+    : "http://localhost:3000", 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
 
 //middlewares
 app.use(express.json())
