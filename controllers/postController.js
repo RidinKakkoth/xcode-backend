@@ -36,8 +36,9 @@ export const createPost = async (req, res) => {
 export const getAllPosts = async (req, res) => {
   try {
 
-    const posts = await Post.find().populate('user', 'name'); 
+    const posts = await Post.find().populate('user', 'name').sort({ updatedAt: -1 }).lean(); 
     
+    console.log(posts,"ppp");
     
     res.status(200).json({success:true,posts});
   } catch (error) {
@@ -49,9 +50,8 @@ export const getUserPosts = async (req, res) => {
   try {
     const userId = req.userId;
 
-    const posts = await Post.find({user:userId}).populate('user', 'name'); 
+    const posts = await Post.find({user:userId}).populate('user', 'name').sort({ updatedAt: -1 }).lean(); 
 
-    
     
     res.status(200).json({success:true,posts});
   } catch (error) {
