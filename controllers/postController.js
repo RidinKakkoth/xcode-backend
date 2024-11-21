@@ -36,10 +36,7 @@ export const createPost = async (req, res) => {
 export const getAllPosts = async (req, res) => {
   try {
 
-    const posts = await Post.find().populate('user', 'name').sort({ updatedAt: -1 }).lean(); 
-    
-    console.log(posts,"ppp");
-    
+    const posts = await Post.find().populate('user', 'name').sort({ updatedAt: -1 }).lean();  
     res.status(200).json({success:true,posts});
   } catch (error) {
     res.status(500).json({ message: 'Error fetching posts', error });

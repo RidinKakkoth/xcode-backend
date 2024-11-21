@@ -6,8 +6,8 @@ const postSchema = new mongoose.Schema(
     caption: { type: String, required: true },
     description: { type: String, required: true },
     
-    image: { type: String }, // URL of the image
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the User who created the post
+    image: { type: String },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, 
   },
   { timestamps: true }
 );
